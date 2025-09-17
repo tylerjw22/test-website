@@ -86,17 +86,6 @@
     }
 
     /* Price Tag */
-    #price-display {
-      margin: 20px 0;
-      font-size: 1.5rem;
-      color: #fff;
-      background: var(--highlight);
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
 
     #paypal-container {
       margin-top: 25px;
@@ -173,8 +162,6 @@
   <label for="email">Email</label>
   <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-  <div id="price-display">Loading price...</div>
-
   <div id="paypal-container"></div>
 
   <div class="verified-badge">No ads, no malware</div>
@@ -200,7 +187,6 @@
 <script>
 const emailInput = document.getElementById("email");
 const paypalContainer = document.getElementById("paypal-container");
-const priceDisplay = document.getElementById("price-display");
 let paypalRendered = false;
 
 function validateEmail(email) {
