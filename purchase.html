@@ -12,6 +12,7 @@
       --accent: #66c0ba;
       --text: #e0e0e0;
       --muted: #999;
+      --highlight: #47AD36;
     }
 
     body {
@@ -43,7 +44,7 @@
     }
 
     main.purchase-box {
-      max-width: 500px;
+      max-width: 520px;
       margin: 60px auto;
       background: var(--surface);
       padding: 40px;
@@ -80,8 +81,26 @@
 
     input:focus {
       outline: none;
-      border-color: #47AD36;
-      box-shadow: 0 0 4px rgba(71,173,54,0.7);
+      border-color: var(--highlight);
+      box-shadow: 0 0 6px rgba(71,173,54,0.7);
+    }
+
+    /* Price Tag */
+    #price-display {
+      margin: 20px 0;
+      font-size: 1.5rem;
+      color: #fff;
+      background: var(--highlight);
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    #paypal-container {
+      margin-top: 25px;
+      display: none;
     }
 
     .verified-badge {
@@ -110,18 +129,35 @@
       text-align: left;
     }
 
-    #price-display {
-      margin-top: 20px;
-      font-size: 1.2rem;
+    /* Footer */
+    footer {
+      background: #0d0d0d;
+      padding: 25px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+      border-top: 2px solid #333;
+    }
+    footer a {
       color: var(--accent);
-      font-weight: bold;
+      text-decoration: none;
+      margin: 0 4px;
     }
+    footer a:hover { text-decoration: underline; }
 
-    #paypal-container {
-      margin-top: 25px;
-      display: none;
+    /* Support Box */
+    .support-email {
+      position: fixed;
+      bottom: 10px;
+      left: 15px;
+      background: rgba(30,30,30,0.9);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      color: #ccc;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.4);
     }
-
+    .support-email a { color: var(--accent); text-decoration: none; }
   </style>
 </head>
 <body>
@@ -137,7 +173,7 @@
   <label for="email">Email</label>
   <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-  <div id="price-display">Price: Loading...</div>
+  <div id="price-display">Loading price...</div>
 
   <div id="paypal-container"></div>
 
@@ -148,6 +184,17 @@
     Contact us at <strong>afkaudiotriggerhelp@gmail.com</strong> for data removal.
   </div>
 </main>
+
+<footer>
+  <p>Made by <strong>mori227</strong>. Join the <a href="https://discord.gg/">Discord</a> for support & updates.</p>
+  <a href="privacy.html">Privacy Policy</a> •
+  <a href="refund.html">Refund Policy</a> •
+  <a href="terms.html">Terms of Service</a>
+</footer>
+
+<div class="support-email">
+  Support: <a href="mailto:afkaudiotriggerhelp@gmail.com">afkaudiotriggerhelp@gmail.com</a>
+</div>
 
 <script src="https://www.paypal.com/sdk/js?client-id=Ac23TNLifUOaHdYPNzkDfbkhfubVEJsQ6GuofyZxig6IkQxDw3Rz512So2S5cDNcHHDz3kdVwcWfeER-&currency=AUD&intent=capture"></script>
 <script>
@@ -164,9 +211,9 @@ function validateEmail(email) {
 fetch("/api/price")
   .then(res => res.json())
   .then(price => {
-    priceDisplay.textContent = `Price: ${price.currency} ${price.value}`;
+    priceDisplay.textContent = `${price.currency} ${price.value}`;
   })
-  .catch(() => { priceDisplay.textContent = "Price: Unavailable"; });
+  .catch(() => { priceDisplay.textContent = "Unavailable"; });
 
 function renderPayPalButton(email) {
   paypalContainer.innerHTML = "";
@@ -216,7 +263,7 @@ function renderPayPalButton(email) {
                 alert("❌ Cannot connect to server. Please try again later.");
               }
             })
-            .catch(err => {
+            .catch(() => {
               alert("❌ Cannot connect to server. Please try again later.");
             });
           });
@@ -224,9 +271,7 @@ function renderPayPalButton(email) {
 
       }).render('#paypal-container');
     })
-    .catch(() => {
-      alert("❌ Cannot connect to server. Please try again later.");
-    });
+    .catch(() => { alert("❌ Cannot connect to server. Please try again later."); });
 }
 
 emailInput.addEventListener("input", function() {
@@ -243,17 +288,6 @@ emailInput.addEventListener("input", function() {
   }
 });
 </script>
-
-<footer>
-  <p>Made by <strong>mori227</strong>. Join the <a href="https://discord.gg/">Discord</a> for support & updates.</p>
-  <a href="privacy.html">Privacy Policy</a> •
-  <a href="refund.html">Refund Policy</a> •
-  <a href="terms.html">Terms of Service</a>
-</footer>
-
-<div class="support-email">
-  Support: <a href="mailto:afkaudiotriggerhelp@gmail.com">afkaudiotriggerhelp@gmail.com</a>
-</div>
 
 </body>
 </html>
