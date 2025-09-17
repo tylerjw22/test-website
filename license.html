@@ -178,14 +178,14 @@
 </div>
 
 <script>
-  // Load license code securely from sessionStorage (set by payment page)
+  // Load license code from sessionStorage only (set securely on payment page)
   const code = sessionStorage.getItem("licenseCode");
 
   if (code) {
     document.getElementById("code").innerText = code;
     sessionStorage.removeItem("licenseCode"); // remove after displaying
   } else {
-    document.getElementById("code").innerText = "No code available.";
+    document.getElementById("code").innerText = "No code available. Please complete purchase.";
   }
 
   function copyCode() {
