@@ -3,142 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Purchase AFK Audio Trigger</title>
+  <title>AFK Audio Trigger</title>
   <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
   <style>
-    body { 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-      background-color: #121212; 
-      margin:0; 
-      padding:0;
-      color: #e0e0e0;
+    :root {
+      --bg: #121212;
+      --surface: #1e1e1e;
+      --accent: #66c0ba;
+      --text: #e0e0e0;
+      --muted: #999;
     }
 
-    /* Header */
-    header { 
-      text-align: center; 
-      padding: 20px; 
-      background: linear-gradient(135deg, #1f1f1f, #2a2a2a); 
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(135deg, #0d0d0d, #3a3a3a);
       border-bottom: 2px solid #333;
     }
-    header h1 { 
-      margin: 0; 
-      font-size: 1.9em; 
-      font-weight: 700; 
-      letter-spacing: 1px; 
-      color: #66c0ba;
-      text-shadow: 0 0 4px rgba(102, 157, 152, 0.6);
+
+    header h1 {
+      font-size: 2.8rem;
+      margin: 0 0 10px;
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(102,192,186,0.5);
     }
 
-    /* Purchase Box */
-    .purchase-box { 
-      background-color: #1e1e1e; 
-      padding:40px; 
-      max-width:500px; 
+    header p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    main.purchase-box {
+      max-width: 500px;
       margin: 60px auto;
-      border:1px solid #333; 
-      border-radius:12px; 
-      box-shadow:0 6px 12px rgba(0,0,0,0.5); 
-      text-align:center;
-    }
-    .purchase-box h2 { 
-      color:#ffffff; 
-      margin-bottom:20px; 
-      font-size: 1.5em;
-    }
-    label { 
-      display:block; 
-      margin-top:15px; 
-      font-weight:bold; 
-      text-align:left; 
-    }
-    input { 
-      width:100%; 
-      padding:12px; 
-      margin-top:8px; 
-      border:1px solid #555; 
-      border-radius:6px; 
-      font-size:1em; 
-      box-sizing:border-box; 
-      background-color:#2c2c2c; 
-      color:#e0e0e0; 
-    }
-    input:focus { 
-      outline:none; 
-      border-color:#47AD36; 
-      box-shadow:0 0 4px rgba(71,173,54,0.7); 
+      background: var(--surface);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+      text-align: center;
+      border: 1px solid #333;
     }
 
-    /* Verified Badge */
+    main.purchase-box h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #555;
+      border-radius: 6px;
+      font-size: 1em;
+      box-sizing: border-box;
+      background-color: #2c2c2c;
+      color: var(--text);
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #47AD36;
+      box-shadow: 0 0 4px rgba(71,173,54,0.7);
+    }
+
     .verified-badge {
-        display: inline-block;
-        margin-top: 18px;
-        padding: 6px 14px;
-        font-size: 0.85em;
-        font-weight: bold;
-        color: #4CAF50;
-        background: rgba(76, 175, 80, 0.15);
-        border: 1px solid #4CAF50;
-        border-radius: 20px;
+      display: inline-block;
+      margin-top: 18px;
+      padding: 6px 14px;
+      font-size: 0.85em;
+      font-weight: bold;
+      color: #4CAF50;
+      background: rgba(76, 175, 80, 0.15);
+      border: 1px solid #4CAF50;
+      border-radius: 20px;
     }
     .verified-badge::before {
-        content: "✔ Secure • ";
+      content: "✔ Secure • ";
     }
 
-    /* Privacy box */
     .privacy-box {
-      margin-top:25px;
-      padding:15px;
-      background:#1f1f1f;
-      border-left:4px solid #2196F3;
-      border-radius:6px;
-      font-size:0.9em;
-      color:#cccccc;
-      text-align:left;
+      margin-top: 25px;
+      padding: 15px;
+      background: #1f1f1f;
+      border-left: 4px solid #2196F3;
+      border-radius: 6px;
+      font-size: 0.9em;
+      color: #cccccc;
+      text-align: left;
     }
 
-    #paypal-container { 
-      margin-top:25px; 
-      display:none; /* hidden until valid email */
+    #price-display {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: bold;
     }
+
+    #paypal-container {
+      margin-top: 25px;
+      display: none;
+    }
+
   </style>
 </head>
 <body>
 
 <header>
   <h1>AFK Audio Trigger</h1>
+  <p>Purchase Paid Version</p>
 </header>
 
-<div class="purchase-box">
-  <h2>Purchase Paid Version</h2>
+<main class="purchase-box">
+  <h2>Get the Full Version</h2>
 
   <label for="email">Email</label>
   <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
+  <div id="price-display">Price: Loading...</div>
+
   <div id="paypal-container"></div>
-  
+
   <div class="verified-badge">No ads, no malware</div>
 
   <div class="privacy-box">
-    AFK Audio Trigger respects your privacy. We collect your <strong>email address</strong> only to generate your license code. Your email will <strong>never be sold or shared</strong>. 
+    AFK Audio Trigger respects your privacy. We collect your <strong>email address</strong> only to generate your license code. Your email will <strong>never be sold or shared</strong>.
     Contact us at <strong>afkaudiotriggerhelp@gmail.com</strong> for data removal.
   </div>
-</div>
+</main>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AW5AFWuuh77HGkc9N_HxNncyVVlpIomB3jKYS-znjH6Kx9IBKqdbMTtlNaq4LLes7bRmGONbjsYV7m6d&currency=AUD&intent=capture"></script>
 <script>
 const emailInput = document.getElementById("email");
 const paypalContainer = document.getElementById("paypal-container");
+const priceDisplay = document.getElementById("price-display");
 let paypalRendered = false;
 
 function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-function renderPayPalButton(email) {
-  paypalContainer.innerHTML = ""; // clear any previous render
+// Fetch price dynamically
+fetch("/api/price")
+  .then(res => res.json())
+  .then(price => {
+    priceDisplay.textContent = `Price: ${price.currency} ${price.value}`;
+  })
+  .catch(() => { priceDisplay.textContent = "Price: Unavailable"; });
 
-  // ✅ Check VPS before proceeding
+function renderPayPalButton(email) {
+  paypalContainer.innerHTML = "";
+
   fetch("/api/check-vps")
     .then(res => res.json())
     .then(status => {
@@ -147,7 +179,6 @@ function renderPayPalButton(email) {
         return;
       }
 
-      // VPS is up → render PayPal button
       paypal.Buttons({
         style: { color: 'blue', shape: 'rect', label: 'paypal' },
 
@@ -191,13 +222,12 @@ function renderPayPalButton(email) {
           });
         }
 
-      }).render('#paypal-container'); // <-- still here
+      }).render('#paypal-container');
     })
     .catch(() => {
       alert("❌ Cannot connect to server. Please try again later.");
     });
 }
-
 
 emailInput.addEventListener("input", function() {
   if (validateEmail(emailInput.value)) {
