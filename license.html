@@ -6,144 +6,143 @@
 <title>AFK Audio Trigger</title>
 <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
 <style>
-  :root {
-    --bg: #121212;
-    --surface: #1e1e1e;
-    --accent: #66c0ba;
-    --text: #e0e0e0;
-    --muted: #999;
-    --highlight: #47AD36;
-  }
+:root {
+  --bg: #121212;
+  --surface: #1e1e1e;
+  --accent: #66c0ba;
+  --text: #e0e0e0;
+  --muted: #999;
+  --highlight: #47AD36;
+}
 
-  body {
-    margin:0; 
-    padding:0; 
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; 
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-  }
+body {
+  margin:0; padding:0;
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
 
-  header {
-    text-align:center;
-    padding:60px 20px 40px;
-    background: linear-gradient(135deg, #0d0d0d, #3a3a3a);
-    border-bottom: 2px solid #333;
-  }
+header {
+  text-align:center;
+  padding:60px 20px 40px;
+  background: linear-gradient(135deg, #0d0d0d, #3a3a3a);
+  border-bottom: 2px solid #333;
+}
 
-  header h1 {
-    font-size:2.8rem;
-    margin:0 0 10px;
-    color: var(--accent);
-    text-shadow: 0 0 12px rgba(102,192,186,0.5);
-  }
+header h1 {
+  font-size:2.8rem;
+  margin:0 0 10px;
+  color: var(--accent);
+  text-shadow: 0 0 12px rgba(102,192,186,0.5);
+}
 
-  .box {
-    background: var(--surface);
-    max-width: 500px;
-    margin: 30px auto;
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #333;
-    box-shadow:0 6px 18px rgba(0,0,0,0.5);
-    text-align:center;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+.box {
+  background: var(--surface);
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #333;
+  box-shadow:0 6px 18px rgba(0,0,0,0.5);
+  text-align:center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
 
-  .box:hover {
-    transform: translateY(-3px);
-    box-shadow:0 10px 16px rgba(0,0,0,0.6);
-  }
+.box:hover {
+  transform: translateY(-3px);
+  box-shadow:0 10px 16px rgba(0,0,0,0.6);
+}
 
-  h2 {
-    color: #fff;
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-  }
+h2 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
 
-  #code {
-    font-size: 1.4em;
-    font-weight: bold;
-    background: #2c2c2c;
-    padding: 15px;
-    border: 1px dashed #555;
-    border-radius: 8px;
-    margin-top: 15px;
-    word-break: break-word;
-    color: #ffffff;
-  }
+#code {
+  font-size: 1.4em;
+  font-weight: bold;
+  background: #2c2c2c;
+  padding: 15px;
+  border: 1px dashed #555;
+  border-radius: 8px;
+  margin-top: 15px;
+  word-break: break-word;
+  color: #ffffff;
+}
 
-  button {
-    margin-top:20px;
-    padding:10px 20px;
-    font-size:1em;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-    font-weight:bold;
-    transition: transform 0.1s, background-color 0.2s;
-  }
+button {
+  margin-top:20px;
+  padding:10px 20px;
+  font-size:1em;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+  transition: transform 0.1s, background-color 0.2s;
+}
 
-  button.copy-btn {
-    background: var(--highlight);
-    color:#fff;
-  }
-  button.copy-btn:hover {
-    transform: scale(1.05);
-    background:#38a745;
-  }
+button.copy-btn {
+  background: var(--highlight);
+  color:#fff;
+}
+button.copy-btn:hover {
+  transform: scale(1.05);
+  background:#38a745;
+}
 
-  button.download-btn {
-    background:#2196F3;
-    color:#fff;
-  }
-  button.download-btn:hover {
-    transform: scale(1.05);
-    background:#1976D2;
-  }
+button.download-btn {
+  background:#2196F3;
+  color:#fff;
+}
+button.download-btn:hover {
+  transform: scale(1.05);
+  background:#1976D2;
+}
 
-  .verified-badge {
-    padding: 6px 14px;
-    font-size:0.85em;
-    font-weight:bold;
-    color:#4CAF50;
-    background: rgba(76, 175, 80, 0.15);
-    border:1px solid #4CAF50;
-    border-radius:20px;
-    display:block;
-    margin: 10px auto 0 auto;
-  }
-  .verified-badge::before {
-    content:"✔ Secure • ";
-  }
+.verified-badge {
+  padding: 6px 14px;
+  font-size:0.85em;
+  font-weight:bold;
+  color:#4CAF50;
+  background: rgba(76, 175, 80, 0.15);
+  border:1px solid #4CAF50;
+  border-radius:20px;
+  display:block;
+  margin: 10px auto 0 auto;
+}
+.verified-badge::before {
+  content:"✔ Secure • ";
+}
 
-  footer {
-    background: #0d0d0d;
-    padding: 25px;
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--muted);
-    border-top: 2px solid #333;
-  }
-  footer a {
-    color: var(--accent);
-    text-decoration: none;
-    margin: 0 4px;
-  }
-  footer a:hover { text-decoration: underline; }
+footer {
+  background: #0d0d0d;
+  padding: 25px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  border-top: 2px solid #333;
+}
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  margin: 0 4px;
+}
+footer a:hover { text-decoration: underline; }
 
-  .support-email {
-    position: fixed;
-    bottom: 10px;
-    left: 15px;
-    background: rgba(30,30,30,0.9);
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size:0.9em;
-    color:#ccc;
-    box-shadow:0 3px 6px rgba(0,0,0,0.4);
-  }
-  .support-email a { color: var(--accent); text-decoration:none; }
+.support-email {
+  position: fixed;
+  bottom: 10px;
+  left: 15px;
+  background: rgba(30,30,30,0.9);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size:0.9em;
+  color:#ccc;
+  box-shadow:0 3px 6px rgba(0,0,0,0.4);
+}
+.support-email a { color: var(--accent); text-decoration:none; }
 </style>
 </head>
 <body>
@@ -178,15 +177,27 @@
 </div>
 
 <script>
-  // Load license code from sessionStorage only (set securely on payment page)
-  const code = sessionStorage.getItem("licenseCode");
-
-  if (code) {
-    document.getElementById("code").innerText = code;
-    sessionStorage.removeItem("licenseCode"); // remove after displaying
-  } else {
-    document.getElementById("code").innerText = "No code available. Please complete purchase.";
+  // Fetch the license code directly from server
+  async function fetchLicenseCode() {
+    try {
+      const res = await fetch("/api/generate", { 
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // You can send email or order ID if needed:
+        body: JSON.stringify({ user_id: sessionStorage.getItem("purchaseEmail") })
+      });
+      const data = await res.json();
+      if(data.code) {
+        document.getElementById("code").innerText = data.code;
+      } else {
+        document.getElementById("code").innerText = "Error retrieving code.";
+      }
+    } catch(e) {
+      document.getElementById("code").innerText = "Error retrieving code.";
+    }
   }
+
+  fetchLicenseCode();
 
   function copyCode() {
     const text = document.getElementById("code").innerText;
