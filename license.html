@@ -3,73 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your License Code</title>
+<title>AFK Audio Trigger</title>
 <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
 <style>
-  body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    background-color: #121212; 
+  :root {
+    --bg: #121212;
+    --surface: #1e1e1e;
+    --accent: #66c0ba;
+    --text: #e0e0e0;
+    --muted: #999;
+    --highlight: #47AD36;
+  }
+
+  body {
     margin:0; 
-    padding:0;
-    color: #e0e0e0;
-    line-height:1.6;
+    padding:0; 
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; 
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
   }
 
-  /* Header spanning full width */
-  header { 
-    width: 100%;
-    text-align: center; 
-    padding: 20px; 
-    background: linear-gradient(135deg, #1f1f1f, #2a2a2a); 
+  header {
+    text-align:center;
+    padding:60px 20px 40px;
+    background: linear-gradient(135deg, #0d0d0d, #3a3a3a);
     border-bottom: 2px solid #333;
-    box-sizing: border-box;
-  }
-  header h1 { 
-    margin: 0; 
-    font-size: 1.9em; 
-    font-weight: 700; 
-    letter-spacing: 1px; 
-    color: #66c0ba;
-    text-shadow: 0 0 4px rgba(102, 157, 152, 0.6);
   }
 
-  /* Cards */
+  header h1 {
+    font-size:2.8rem;
+    margin:0 0 10px;
+    color: var(--accent);
+    text-shadow: 0 0 12px rgba(102,192,186,0.5);
+  }
+
   .box {
-    background-color: #1e1e1e; 
-    padding:30px; 
-    border-radius:12px; 
-    border:1px solid #333; 
-    max-width:500px; 
-    margin:30px auto;
-    box-shadow:0 6px 12px rgba(0,0,0,0.5);
-    text-align: center;
-    width:90%;
+    background: var(--surface);
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow:0 6px 18px rgba(0,0,0,0.5);
+    text-align:center;
     transition: transform 0.2s, box-shadow 0.2s;
   }
+
   .box:hover {
     transform: translateY(-3px);
     box-shadow:0 10px 16px rgba(0,0,0,0.6);
   }
-  h2 { 
-    color:#ffffff; 
-    margin-bottom:15px; 
-    font-size:1.4em;
+
+  h2 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
   }
 
-  /* License code */
   #code {
-    font-size:1.4em; 
-    font-weight:bold; 
-    background:#2c2c2c; 
-    padding:15px; 
-    border:1px dashed #555; 
-    border-radius:8px; 
-    margin-top:15px;
-    word-wrap:break-word;
-    color:#ffffff;
+    font-size: 1.4em;
+    font-weight: bold;
+    background: #2c2c2c;
+    padding: 15px;
+    border: 1px dashed #555;
+    border-radius: 8px;
+    margin-top: 15px;
+    word-break: break-word;
+    color: #ffffff;
   }
 
-  /* Buttons */
   button {
     margin-top:20px;
     padding:10px 20px;
@@ -80,39 +83,67 @@
     font-weight:bold;
     transition: transform 0.1s, background-color 0.2s;
   }
-  button.copy-btn { 
-    background:#4CAF50; 
-    color:white; 
+
+  button.copy-btn {
+    background: var(--highlight);
+    color:#fff;
   }
-  button.copy-btn:hover { 
+  button.copy-btn:hover {
     transform: scale(1.05);
-    background:#45a049; 
-  }
-  button.download-btn { 
-    background:#28a745; 
-    color:white; 
-  }
-  button.download-btn:hover { 
-    transform: scale(1.05);
-    background:#218838; 
+    background:#38a745;
   }
 
-  /* Verified Badge */
+  button.download-btn {
+    background:#2196F3;
+    color:#fff;
+  }
+  button.download-btn:hover {
+    transform: scale(1.05);
+    background:#1976D2;
+  }
+
   .verified-badge {
-      padding: 6px 14px;
-      font-size: 0.85em;
-      font-weight: bold;
-      color: #4CAF50;
-      background: rgba(76, 175, 80, 0.15);
-      border: 1px solid #4CAF50;
-      border-radius: 20px;
-      text-align: center;
-      display: block;
-      margin: 10px auto 0 auto;
+    padding: 6px 14px;
+    font-size:0.85em;
+    font-weight:bold;
+    color:#4CAF50;
+    background: rgba(76, 175, 80, 0.15);
+    border:1px solid #4CAF50;
+    border-radius:20px;
+    display:block;
+    margin: 10px auto 0 auto;
   }
   .verified-badge::before {
-      content: "✔ Secure • ";
+    content:"✔ Secure • ";
   }
+
+  footer {
+    background: #0d0d0d;
+    padding: 25px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+    border-top: 2px solid #333;
+  }
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+    margin: 0 4px;
+  }
+  footer a:hover { text-decoration: underline; }
+
+  .support-email {
+    position: fixed;
+    bottom: 10px;
+    left: 15px;
+    background: rgba(30,30,30,0.9);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size:0.9em;
+    color:#ccc;
+    box-shadow:0 3px 6px rgba(0,0,0,0.4);
+  }
+  .support-email a { color: var(--accent); text-decoration:none; }
 </style>
 </head>
 <body>
@@ -121,14 +152,12 @@
   <h1>AFK Audio Trigger</h1>
 </header>
 
-<!-- License Code Box -->
 <div class="box">
   <h2>Your License Code</h2>
   <div id="code">Loading...</div>
   <button class="copy-btn" onclick="copyCode()">Copy to Clipboard</button>
 </div>
 
-<!-- Download Box -->
 <div class="box">
   <h2>Download AFK Audio Trigger</h2>
   <a href="https://github.com/mori227/AFKAudioTrigger/releases/download/v1.4.0/AFKAudioTriggerv1.4.zip" download>
@@ -137,15 +166,26 @@
   <div class="verified-badge">No ads, no malware</div>
 </div>
 
+<footer>
+  <p>Made by <strong>mori227</strong>. Join the <a href="https://discord.gg/">Discord</a> for support & updates.</p>
+  <a href="privacy.html">Privacy Policy</a> •
+  <a href="refund.html">Refund Policy</a> •
+  <a href="terms.html">Terms of Service</a>
+</footer>
+
+<div class="support-email">
+  Support: <a href="mailto:afkaudiotriggerhelp@gmail.com">afkaudiotriggerhelp@gmail.com</a>
+</div>
+
 <script>
-  // Extract license code from URL query parameter
-  const params = new URLSearchParams(window.location.search);
-  const code = params.get("code");
+  // Load license code securely from sessionStorage (set by payment page)
+  const code = sessionStorage.getItem("licenseCode");
 
   if (code) {
     document.getElementById("code").innerText = code;
+    sessionStorage.removeItem("licenseCode"); // remove after displaying
   } else {
-    document.getElementById("code").innerText = "No code provided.";
+    document.getElementById("code").innerText = "No code available.";
   }
 
   function copyCode() {
