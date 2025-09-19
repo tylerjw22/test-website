@@ -17,6 +17,14 @@ header h1 {
   color: #3878A0; /* Title color */
 }
 
+header .logo {
+  height: 150px; 
+  width: auto; 
+  margin-bottom: 15px;
+  max-width: 90%;    
+}
+
+
 /* Usage paragraph centered above boxes */
 .usage-section {
   text-align: center;
